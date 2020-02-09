@@ -1,4 +1,4 @@
-public interface Buttle {
+public interface Buttle{
     int attack();
 
     int getHP();

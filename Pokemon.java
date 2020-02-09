@@ -1,56 +1,38 @@
-/*Pokemonクラス
-フィールド
-CP
-name
-fullHp
-hp
-weight
-tall
-メソッド
-strengthen 引数なし モンスターを強化するメソッド
-    →CPをweightとtallの積の平方根倍する
-    →Hpをweightとtallの積の平方根倍する
-modifyName 引数あり モンスターの名前を変更するメソッド
-　　ただし最大入力文字数は３２文字までとして例外を発生させる。
-getDamage 引数は受けたダメージポイント ダメージを受ける。
-各フィールドのgetter/setterメソッド
-　　ただしfullHp、weight、tallの範囲は、0から999。HPは0からfullHpの値まで。*/
-
-public class Pokemon implements Buttle {
+public class Pokemon implements Buttle{
     short CP;
     String name;
-    short fullHp;
+    short fullhp;
     short hp;
     double weight;
     double tall;
 
     void strengthen(){
-        //Pokemon.java:28: エラー: 不適合な型: 精度が失われる可能性があるdoubleからshortへの変換
         // double -> short
         // 1. new DoubleにMath.sqrt:doubleをいれました プリミティブ型からオブジェクト型に変換した
         // 2. Double.shortValueでdoubleからshortに変換した
-        this.CP = new Double(Math.sqrt(weight*tall)*CP/5).shortValue();
-        this.fullHp = new Double(Math.sqrt(weight*tall)*fullHp/5).shortValue();
-        System.out.println(CP+ "強化した");
+        this.CP = new Double(Math.sqrt(weight*tall) * CP/5).shortValue(); //ターゲット VM 内のプリミティブな short 値へのアクセスを提供します。
+        this.fullhp = new Double(Math.sqrt(weight*tall) * CP/5).shortValue();
+        System.out.println(CP + "強化した");
     }
 
-    //体力を回復
+    //体力の回復 メソッドの作成
     void recover(){
-        this.hp = this.fullHp;
+        this.hp = this.fullhp;
         System.out.println(this.hp + "回復した");
     }
 
-    void modifyName(String Name){
+    //メソッドの作成
+    void modifyName(String name){
         // 名前のサイズを３２文字以下であれば代入する
         // それ以外例外を出す
         // this.name = Name.getBytes().length;
-        this.name = Name;
+        this.name = name;
     }
-    
+
     public Short getCP(){
         return CP;
     }
-
+    
     public void setCP(short CP){
         this.CP = CP;
     }
@@ -64,14 +46,13 @@ public class Pokemon implements Buttle {
         this.name = name;
     }
 
-    //シンボルを見つけられません
+    //シンボルはつけられない
     public Short getfullHP(){
-        return fullHp;
+        return fullhp;
     }
 
     public void setfullHP(Short fullHp){
-//ただしfullHp、weight、tallの範囲は、0から999。HPは0からfullHpの値まで。 （編集済み）ifを使う.1000以下なら〜で、それ以外であれば例外を指定する.
-        this.fullHp = fullHp;
+        this.fullhp = fullHp;
     }
 
     public double gethp(){
@@ -82,24 +63,24 @@ public class Pokemon implements Buttle {
         this.hp = hp;
     }
 
-    public void setWeight(Double weight){
-        this.weight = weight;
-    }
-
     public double getWeight(){
         return weight;
     }
 
-    public void setTall(double tall){
-        this.tall = tall;
+    public void setWeight(Double weight){
+        this.weight = weight;
     }
 
     public double getTall(){
         return tall;
     }
 
+    public void setTall(double tall){
+        this.tall = tall;
+    }
+
     @Override
-    public int attack() {
+    public int attack(){
         // このモンスターが攻撃する
         // CP*乱数 0~1 を返す
         int i;
@@ -108,7 +89,7 @@ public class Pokemon implements Buttle {
     }
 
     @Override
-    public int getHP() {
+    public int getHP(){
         // 今のヒットポイントを返す
         return hp;
     }
@@ -123,7 +104,7 @@ public class Pokemon implements Buttle {
         // 1. new DoubleにMath.sqrt:doubleを代入 プリミティブ型からオブジェクト型に変換
         // 2. Double.shortValueでdoubleからshortに変換
         hp = new Double(hp - damage).shortValue();
-        System.out.println("HP:"+hp);
+        System.out.println("HP" + hp);
 
         if(hp <= 0){
             hp = 0;
