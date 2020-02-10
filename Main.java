@@ -62,7 +62,16 @@ class Main{
         Scanner scan = new Scanner(System.in);
         String str = null;
         do{
-            System.out.println(monstor1.getName() + "が" + mons);
+            System.out.println(monstor1.getName() + "が" + monstor2.getName() + "に攻撃した");
+            int m1Damage = monstor1.attack(); 
+            System.out.println(monstor2.getName() + "に" + m1Damage + "のダメージ");
+            if(monstor2.getHP() <= 0){
+                System.out.println(monstor2.getName() + "は倒れた");
+                return;
+            }
+            System.out.println(monstor2.getName() + "が" + monstor1.getName() + "に攻撃した");
+            int m2Damage = monstor2.attack();
+            System.out.println(x);
         }while()
     }
 }
