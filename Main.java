@@ -71,7 +71,15 @@ class Main{
             }
             System.out.println(monstor2.getName() + "が" + monstor1.getName() + "に攻撃した");
             int m2Damage = monstor2.attack();
-            System.out.println(x);
-        }while()
+            monstor1.getDamage(m2Damage);
+            System.out.println(monstor1.getName() + "に" + m2Damage + "のダメージ");
+            if(monstor1.getHP() <= 0){
+                System.out.println(monstor1.getName() + "は倒れた");
+                return;
+            }
+            str = scan.nextLine();
+        }while(!str.equals("q"));
+
+        scan.close();
     }
 }
