@@ -36,5 +36,6 @@ class Recover extends Tool{
     @Override
     boolean gain(){
         System.out.print("回復薬を使う");
+        return true;
     };
 }
